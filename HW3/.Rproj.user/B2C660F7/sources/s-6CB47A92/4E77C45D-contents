@@ -1,0 +1,226 @@
+---
+title: "Home Work 3"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+mpg
+```
+
+# 3.3.1
+#### Q1. What’s gone wrong with this code? Why are the points not blue?
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+Ans. The color parameter is taken in aesthetic, which defines the color for cateogrical variable. Here, to make the points blue we need to pass color as a parameter to geom_point function instead of aes.
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy) , color = "blue")
+```
+
+#### Q2. Which variables in mpg are categorical? Which variables are continuous? (Hint: type ?mpg to read the documentation for the dataset). How can you see this information when you run mpg?
+```{r}
+?mpg
+# How can you see this information when you run mpg?
+str(mpg)
+
+## Which variables in mpg are categorical?
+# Categorical Variable - manufacturer, model , trans,drv, fl, class
+
+## Which variables are continuous?
+# Continuous Variable -year, displ, cyl, cty, hwy, 
+```
+
+
+#### Q3. Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables?
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = year, size =cyl, shape=drv))
+```
+
+#### Q4. What happens if you map the same variable to multiple aesthetics?
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = cyl, y = cyl, color= cyl, size = cyl) )
+# Mapping same variable to different aes doesn't cause error for above parameter except the shape.
+
+```
+
+
+#### Q5. What does the stroke aesthetic do? What shapes does it work with? (Hint: use ?geom_point)
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = cyl, y = trans, stroke = 3) )
+
+# Stroke adds border to shape.
+# Shape 21 – 24 works with stroke.
+```
+
+
+
+#### Q6. What happens if you map an aesthetic to something other than a variable name, like aes(colour = displ < 5)? Note, you’ll also need to specify x and y.
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = cyl, y = trans, color = (displ < 3) ))
+
+# Here, color is given based on the condition displ<3. True/False are attached the color to display.
+```
+
+
+# 3.5.1
+
+#### Q1.What happens if you facet on a continuous variable?
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~hwy)
+
+# facet convert continuous variable to categorial variable and shows the plot.
+```
+#### Q2.What do the empty cells in plot with facet_grid(drv ~ cyl) mean? How do they relate to this plot?
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = drv, y = cyl)) +
+  facet_grid(drv ~ cyl)
+
+# It shows the range of values for a which there is no values. Meaning, cyl = 4 doesnt have drv values for drv = 5.
+```
+#### Q3.What plots does the following code make? What does . do?
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+
+#
+```
+#### Q4.
+```{r}
+```
+#### Q5.
+```{r}
+```
+#### Q6.
+```{r}
+```
+
+# 3.6.1
+
+#### Q1.
+```{r}
+```
+#### Q2.
+```{r}
+```
+#### Q3.
+```{r}
+```
+#### Q4.
+```{r}
+```
+#### Q5.
+```{r}
+```
+#### Q6.
+```{r}
+```
+
+# 3.7.1
+#### Q1.
+```{r}
+```
+#### Q2.
+```{r}
+```
+#### Q3.
+```{r}
+```
+#### Q4.
+```{r}
+```
+#### Q5.
+```{r}
+```
+
+
+# 3.9.1
+#### Q1.
+```{r}
+```
+#### Q2.
+```{r}
+```
+#### Q3.
+```{r}
+```
+#### Q4.
+```{r}
+```
+
+
+# 7.5.1.1
+
+#### Q1.
+```{r}
+```
+#### Q2.
+```{r}
+```
+#### Q3.
+```{r}
+```
+#### Q4.
+```{r}
+```
+#### Q5.
+```{r}
+```
+#### Q6.
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
